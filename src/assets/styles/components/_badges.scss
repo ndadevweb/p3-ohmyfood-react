@@ -1,0 +1,22 @@
+.badge {
+    position: absolute;
+    width: 80px;
+    height: 30px;
+    border: thin solid darken($color-tertiary, 10%);
+    border-radius: 3px;
+    box-shadow: 0 2px 1px 1px rgba(0, 0, 0, .1);
+    font-size: 14px;
+    font-weight: 500;;
+    line-height: 30px;
+    text-align: center;
+
+    &--green {
+        background: $color-tertiary;
+        color: darken($color-tertiary, 40%);
+    }
+
+    &--top-right {
+        top: 12px;
+        right: 12px;
+    }
+}

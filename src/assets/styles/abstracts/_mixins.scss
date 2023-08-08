@@ -1,0 +1,47 @@
+
+@mixin create-element-animation-delay($selector, $numberItems: 1, $delay: 100, $incrementTo: 150) {
+    @for $i from 1 through $numberItems {
+        $value: $delay + #{ms};
+
+        #{$selector}.delay-#{$i} {
+            animation-delay: $value;
+        }
+
+        $delay: $delay + $incrementTo;
+    }
+}
+
+
+@mixin responsive($breakpointName, $breakpoints: $breakpoints) {
+    $breakpoint: map-get($breakpoints, $breakpointName);
+
+    @if $breakpoint == null {
+        @content;
+    } @else {
+
+        @media screen and (min-width: #{$breakpoint}) {
+            @content;
+        }
+    }
+}
+
+
+@mixin position($type, $top: null, $right: null, $bottom: null, $left: null) {
+    position: $type;
+
+    @if $top != null {
+        top: $top;
+    }
+
+    @if $right != null {
+        right: $right;
+    }
+
+    @if $bottom != null {
+        bottom: $bottom;
+    }
+
+    @if $left != null {
+        left: $left;
+    }
+}

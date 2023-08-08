@@ -1,0 +1,54 @@
+.spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include position(fixed, 0, 0, 0, 0);
+
+    z-index: 5000;
+
+    background: $color-black;
+
+    animation:
+        spinner-fade-in 750ms 1 forwards,
+        spinner-fade-out  750ms 3s 1 forwards;
+
+    &__circle1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 3px solid $color-secondary;
+        border-top: 3px solid transparent;
+        border-bottom: 3px solid transparent;
+        opacity: .9;
+        transform: rotate(45deg);
+        animation: spinner-circle1 1500ms linear infinite;
+    }
+
+    &__circle2 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        width: 75px;
+        height: 75px;
+        border-radius: 50%;
+        border: 3px solid $color-tertiary;
+        border-left: 3px solid transparent;
+        border-right: 3px solid transparent;
+
+        transform: rotate(-45deg);
+    }
+
+    &__circle3 {
+        width: 40px;
+        height: 40px;
+        border-radius: 500%;
+        background: rgba($color-primary, .8);
+        animation: spinner-circle3 900ms alternate infinite;
+    }
+}

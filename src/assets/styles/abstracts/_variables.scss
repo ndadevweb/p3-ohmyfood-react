@@ -1,0 +1,20 @@
+
+$title-and-logo-font: 'Shrikhand', cursive;
+$text-font: 'Roboto', sans-serif;
+
+$color-black: #000;
+$color-white: #FFF;
+$color-gray: #F6F6F6;
+
+$color-primary: #9356DC;
+$color-secondary: #FF79DA;
+$color-tertiary: #99E2D0;
+
+$base-font-size: 16px;
+
+$breakpoints: (
+    'small': 375px,
+    'medium': 768px,
+    'large': 992px,
+    'max-size': 1200px
+)

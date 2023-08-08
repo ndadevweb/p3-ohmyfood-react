@@ -1,0 +1,41 @@
+.footer {
+    padding: 20px;
+    height: 197px;
+    background: #353535;
+
+    &__heading {
+        @extend %font-logo;
+        font-size: rem(18px);
+        font-weight: 400;
+        margin: 0 0 20px 0;
+        color: $color-white;
+    }
+
+    &__navigation ul {
+        margin: 0;
+        list-style: none;
+    }
+
+    &__navigation li {
+        line-height: rem(28px);
+    }
+
+    &__navigation a {
+        font-weight: 400;
+        color: $color-white;
+        transition: color .5s;
+
+        &:hover {
+            color: $color-tertiary;
+        }
+    }
+
+    &__navigation li:nth-last-child(-n+2) a {
+        font-weight: 300;
+    }
+
+    &__navigation a>i {
+        font-size: 12px;
+        width: 25px;
+    }
+}

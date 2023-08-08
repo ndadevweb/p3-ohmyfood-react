@@ -1,0 +1,24 @@
+.header {
+    position: relative;
+    z-index: 1000;
+    min-height: 63px;
+    background: $color-white;
+    box-shadow: 0 0 5px rgba(0,0,0, .3);
+
+    &__logo {
+        @include position(absolute, 50%, null, null, 50%);
+
+        transform: translate(-50%, -50%);
+        display: block;
+        width: 165px;
+        margin: 0 auto;
+    }
+
+    &__back {
+        @include position(absolute, 50%, null, null, 30px);
+
+        transform: translateY(-50%);
+        color: $color-black;
+        font-size: rem(22px);
+    }
+}

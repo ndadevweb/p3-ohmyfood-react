@@ -1,0 +1,31 @@
+.heart {
+    $parent: &;
+    $transitionMicroSecond: 750ms;
+
+    stroke-width: 10;
+    stroke: $color-black;
+
+    cursor: pointer;
+
+    transition:
+        stroke $transitionMicroSecond,
+        stroke-width $transitionMicroSecond;
+
+    &--color-primary,
+    &--color-secondary {
+        stop-color: $color-white;
+        transition: stop-color $transitionMicroSecond;
+    }
+
+    &:hover {
+        stroke-width: 0;
+
+        & #{$parent}--color-primary {
+            stop-color: $color-primary;
+        }
+
+        & #{$parent}--color-secondary {
+            stop-color: $color-secondary;
+        }
+    }
+}

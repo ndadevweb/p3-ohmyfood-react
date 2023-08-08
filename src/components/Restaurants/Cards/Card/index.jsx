@@ -1,0 +1,37 @@
+import PropTypes from 'prop-types'
+import { Badges, Like } from '../../../'
+
+export default function Card({ item }) {
+
+  const imagePath = `assets/images/restaurants/${item.image}`
+
+  const handleClick = (event) => {
+    const isIcon = !!event.target?.closest('svg')?.dataset?.icon ?? false
+
+    if (isIcon === true) {
+      event.preventDefault()
+    }
+
+  }
+
+  return (
+    <a href="#" className="card" onClick={handleClick}>
+      <img src={imagePath} alt={item.imageDescription} className="card__image" />
+
+      {item.isNew === true && <Badges name="new" />}
+
+      <div className="card__details">
+        <div className="card__descriptions">
+          <h4 className="card__heading">{item.name}</h4>
+          <p className="card__information">{item.localization}</p>
+        </div>
+
+        <Like isLike={false} />
+      </div>
+    </a>
+  )
+}
+
+Card.propTypes = {
+  item: PropTypes.object.isRequired
+}

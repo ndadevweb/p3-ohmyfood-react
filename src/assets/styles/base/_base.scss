@@ -1,0 +1,29 @@
+html {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+body {
+    background: $color-gray;
+    height: 100vh;
+}
+
+#root {
+    height: inherit;
+}
+
+main {
+    position: relative;
+    z-index: 900;
+    min-height: 100px;
+}
+
+a {
+    text-decoration: none;
+}

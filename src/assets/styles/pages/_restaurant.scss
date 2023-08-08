@@ -1,0 +1,103 @@
+.restaurant {
+
+    &__image {
+        @include responsive('medium') {
+            height: 360px;
+        }
+
+        @include responsive('large') {
+            height: 460px;
+        }
+
+
+        position: relative;
+        width: 100%;
+        height: 260px;
+        object-fit: cover;
+    }
+
+    &__menu {
+
+        @include responsive('large') {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+
+            & > h2 {
+                grid-row: 1 / 1;
+                grid-column: 1 / 4;
+            }
+
+            &__list {
+                overflow: hidden;
+            }
+
+            & > button {
+                grid-column: 2 / 3;
+            }
+        }
+
+        padding-bottom: 55px;
+        background: $color-white;
+
+        & > h2 {
+            @include responsive('large') {
+                margin-top: -70px;
+            }
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+
+            position: relative;
+            z-index: 200;
+
+            border-radius: 45px 45px 0 0;
+            background: $color-white;
+
+            margin: -45px 0 0 0;
+            padding: 40px 20px 35px;
+
+            @extend %font-logo;
+            font-size: rem(28px);
+            font-weight: 500;
+
+            & > i {
+                float: right;
+            }
+        }
+
+        &__list {
+
+            margin-bottom: 35px;
+            cursor: pointer;
+
+            &:last-of-type {
+                margin-bottom: 50px;
+            }
+
+            & > h3 {
+                position: relative;
+                margin: 0 0 25px 20px;
+                font-size: rem(16px);
+                font-weight: 300;
+
+                &::before {
+                    content: '';
+                    display: block;
+
+                    @include position(absolute, null, null, -8px, null);
+
+                    width: 40px;
+                    border-bottom: 3px solid $color-tertiary;
+                }
+            }
+
+            @include create-element-animation-delay($selector: '.card--animate', $numberItems: 10);
+        }
+
+        & > button {
+            display: block;
+            margin-right: auto;
+            margin-left: auto;
+        }
+    }
+}

@@ -1,0 +1,7 @@
+.container {
+    margin: 0 auto;
+
+    @include responsive('max-size') {
+        max-width: map-get($breakpoints, 'max-size');
+    }
+}
