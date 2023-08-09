@@ -1,14 +1,12 @@
+import { Outlet } from 'react-router'
 import { Footer, Header } from './components'
-import Home from './pages/Home'
 
 function App() {
   return (
     <>
       <Header />
       <main>
-
-        <Home />
-
+        <Outlet />
       </main>
       <Footer />
     </>

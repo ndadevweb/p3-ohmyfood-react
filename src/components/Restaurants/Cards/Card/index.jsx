@@ -1,4 +1,5 @@
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 import { Badges, Like } from '../../../'
 
 export default function Card({ item }) {
@@ -15,7 +16,7 @@ export default function Card({ item }) {
   }
 
   return (
-    <a href="#" className="card" onClick={handleClick}>
+    <Link to={item.slug} className="card" onClick={handleClick}>
       <img src={imagePath} alt={item.imageDescription} className="card__image" />
 
       {item.isNew === true && <Badges name="new" />}
@@ -28,7 +29,7 @@ export default function Card({ item }) {
 
         <Like isLike={false} />
       </div>
-    </a>
+    </Link>
   )
 }
 
