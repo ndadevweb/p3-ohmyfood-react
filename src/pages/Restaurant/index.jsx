@@ -50,7 +50,6 @@ export default function Restaurant() {
       <form className="container restaurant__menu" onSubmit={(event) => event.preventDefault()}>
         <h2>
           {item.name}
-          {/* <Like isLike={isLike} /> */}
           <Like isLike={isLiked(item.id) === true} handleClick={() => handleLike(item.id)} />
         </h2>
 

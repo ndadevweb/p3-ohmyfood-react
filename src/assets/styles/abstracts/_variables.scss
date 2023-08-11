@@ -4,12 +4,15 @@ $text-font: 'Roboto', sans-serif;
 $color-black: #000;
 $color-white: #FFF;
 $color-gray: #F6F6F6;
+$color-placeholder: #DEDEDE70;
 
 $color-primary: #9356DC;
 $color-secondary: #FF79DA;
 $color-tertiary: #99E2D0;
 
 $base-font-size: 16px;
+
+$radius-placeholder: 5px;
 
 $breakpoints: (
     'small': 375px,

@@ -11,7 +11,7 @@ export default function Home() {
       <Localization />
       <ExploreRestaurants />
       <Process />
-      <Restaurants items={restaurants} />
+      <Restaurants items={restaurants} loading={loading} />
     </>
   )
 }

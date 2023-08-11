@@ -14,7 +14,7 @@ export default function Card({ item }) {
       <div className="card-check__checked">
         <i className="fa-solid fa-circle-check"></i>
       </div>
-    </article >
+    </article>
   )
 }
 
