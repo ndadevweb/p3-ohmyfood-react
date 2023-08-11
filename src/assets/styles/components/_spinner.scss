@@ -10,8 +10,13 @@
     background: $color-black;
 
     animation:
-        spinner-fade-in 750ms 1 forwards,
-        spinner-fade-out  750ms 3s 1 forwards;
+        spinner-fade-in 750ms 1 forwards
+        /*, spinner-fade-out 750ms 3s 1 forwards*/
+    ;
+
+    &--fade-out {
+        animation: spinner-fade-out 750ms 1 forwards;
+    }
 
     &__circle1 {
         display: flex;
