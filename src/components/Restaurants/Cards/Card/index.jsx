@@ -18,7 +18,7 @@ export default function Card({ item }) {
   }
 
   return (
-    <Link to={item.slug} className="card" onClick={handleClick}>
+    <Link to={item.slug} className="card card__fade-in" onClick={handleClick}>
       <img src={imagePath} alt={item.imageDescription} className="card__image" />
 
       {item.isNew === true && <Badges name="new" />}

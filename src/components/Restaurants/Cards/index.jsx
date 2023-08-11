@@ -3,7 +3,7 @@ import Card from './Card'
 import CardPlaceholder from './CardPlaceholder'
 
 export default function Cards({ items, loading }) {
-  console.log(loading)
+
   return (
     <>
       {
