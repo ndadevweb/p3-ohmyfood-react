@@ -1,5 +1,6 @@
 [
   {
+    "id": 1,
     "name": "La palette du goût",
     "localization": "Ménilmontant",
     "slug": "restaurant-la-palette-du-gout.html",
@@ -61,6 +62,7 @@
     }
   },
   {
+    "id": 2,
     "name": "La note enchantée",
     "localization": "Charonne",
     "slug": "restaurant-la-note-enchantee.html",
@@ -127,6 +129,7 @@
     }
   },
   {
+    "id": 3,
     "name": "À la française",
     "localization": "Cité Rouge",
     "slug": "restaurant-a-la-francaise.html",
@@ -188,6 +191,7 @@
     }
   },
   {
+    "id": 4,
     "name": "Le délice des sens",
     "localization": "Folie-Méricourt",
     "slug": "restaurant-le-delice-des-sens.html",

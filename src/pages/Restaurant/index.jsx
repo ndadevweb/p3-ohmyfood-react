@@ -1,3 +1,4 @@
+import { useStoreContext } from '../../hooks/useStoreContext'
 import { useParams } from 'react-router'
 import { Like, RestaurantMenu } from '../../components'
 
@@ -6,8 +7,8 @@ import dataFromJSON from '../../data/restaurants.json'
 
 export default function Restaurant() {
 
-  // dev
-  const isLike = false
+  const { isLiked, handleLike } = useStoreContext()
+
   let { slug } = useParams()
 
   const item = dataFromJSON.filter(data => data.slug === slug)?.pop()
@@ -46,10 +47,11 @@ export default function Restaurant() {
   return (
     <div className="restaurant">
       <img src={imagePath} alt="" className="restaurant__image" />
-      <div className="container restaurant__menu">
+      <form className="container restaurant__menu" onSubmit={(event) => event.preventDefault()}>
         <h2>
           {item.name}
-          <Like isLike={isLike} />
+          {/* <Like isLike={isLike} /> */}
+          <Like isLike={isLiked(item.id) === true} handleClick={() => handleLike(item.id)} />
         </h2>
 
         {
@@ -59,7 +61,7 @@ export default function Restaurant() {
         }
 
         <button type="submit" className="btn btn--classic btn--p50 btn--center">Commander</button>
-      </div>
+      </form>
     </div>
   )
 }

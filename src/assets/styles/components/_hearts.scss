@@ -17,6 +17,7 @@
         transition: stop-color $transitionMicroSecond;
     }
 
+    &.active,
     &:hover {
         stroke-width: 0;
 

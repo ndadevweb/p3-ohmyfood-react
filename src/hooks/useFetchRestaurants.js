@@ -24,9 +24,9 @@ export default function useFetchRestaurants() {
 
         if(componentMounted === true) {
           setRestaurants(() => data.map(restaurant => {
-            const { name, localization, slug, isNew, image, imageDescription, ...rest} = restaurant
+            const { id, name, localization, slug, isNew, image, imageDescription, ...rest} = restaurant
 
-            return { name, localization, slug, isNew, image, imageDescription }
+            return { id, name, localization, slug, isNew, image, imageDescription }
           }))
         }
       } catch(error) {

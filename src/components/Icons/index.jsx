@@ -1,14 +1,14 @@
 import PropTypes from 'prop-types'
 import { useId } from 'react'
 
-export default function Icons({ name }) {
+export default function Icons({ name, active = false }) {
 
   const id = useId()
 
   switch (name) {
     case 'heart':
       return (
-        <svg viewBox="0 0 325 325" width="25" height="25" className="heart" data-icon="true">
+        <svg viewBox="0 0 325 325" width="25" height="25" className={`heart ${active === true ? "active" : ""}`} data-icon="true">
           <linearGradient x1="0" y1="0" x2="0" y2="100%" id={id}>
             <stop className="heart--color-primary" offset="0" />
             <stop className="heart--color-secondary" offset="100%" />
@@ -26,5 +26,6 @@ export default function Icons({ name }) {
 }
 
 Icons.propTypes = {
-  name: PropTypes.string.isRequired
+  name: PropTypes.string.isRequired,
+  active: PropTypes.bool
 }

@@ -1,8 +1,11 @@
 import PropTypes from 'prop-types'
+import { useStoreContext } from '../../../../hooks/useStoreContext'
 import { Link } from 'react-router-dom'
 import { Badges, Like } from '../../../'
 
 export default function Card({ item }) {
+
+  const { isLiked, handleLike } = useStoreContext()
 
   const imagePath = `assets/images/restaurants/${item.image}`
 
@@ -12,7 +15,6 @@ export default function Card({ item }) {
     if (isIcon === true) {
       event.preventDefault()
     }
-
   }
 
   return (
@@ -27,7 +29,7 @@ export default function Card({ item }) {
           <p className="card__information">{item.localization}</p>
         </div>
 
-        <Like isLike={false} />
+        <Like isLike={isLiked(item.id) === true} handleClick={() => handleLike(item.id)} />
       </div>
     </Link>
   )
