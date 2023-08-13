@@ -22,7 +22,7 @@
             display: grid;
             grid-template-columns: repeat(3, 1fr);
 
-            & > h2 {
+            &__main__title {
                 grid-row: 1 / 1;
                 grid-column: 1 / 4;
             }
@@ -31,7 +31,7 @@
                 overflow: hidden;
             }
 
-            & > button {
+            &>button {
                 grid-column: 2 / 3;
             }
         }
@@ -39,10 +39,11 @@
         padding-bottom: 55px;
         background: $color-white;
 
-        & > h2 {
+        &__main__title {
             @include responsive('large') {
                 margin-top: -70px;
             }
+
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -60,8 +61,17 @@
             font-size: rem(28px);
             font-weight: 500;
 
-            & > i {
+            &>i {
                 float: right;
+            }
+
+            &__placeholder {
+                height: rem(18px);
+                width: rem(200px);
+                display: block;
+                margin-top: 15px;
+                border-radius: $radius-placeholder;
+                background: $color-placeholder;
             }
         }
 
@@ -74,7 +84,7 @@
                 margin-bottom: 50px;
             }
 
-            & > h3 {
+            &>h3 {
                 position: relative;
                 margin: 0 0 25px 20px;
                 font-size: rem(16px);
@@ -94,7 +104,7 @@
             @include create-element-animation-delay($selector: '.card--animate', $numberItems: 10);
         }
 
-        & > button {
+        &>button {
             display: block;
             margin-right: auto;
             margin-left: auto;

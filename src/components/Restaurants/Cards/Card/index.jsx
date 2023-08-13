@@ -2,12 +2,11 @@ import PropTypes from 'prop-types'
 import { useStoreContext } from '../../../../hooks/useStoreContext'
 import { Link } from 'react-router-dom'
 import { Badges, Like } from '../../../'
+import { getImagePath } from '../../../../utils/helpers'
 
 export default function Card({ item }) {
 
   const { isLiked, handleLike } = useStoreContext()
-
-  const imagePath = `assets/images/restaurants/${item.image}`
 
   const handleClick = (event) => {
     const isIcon = !!event.target?.closest('svg')?.dataset?.icon ?? false
@@ -19,7 +18,7 @@ export default function Card({ item }) {
 
   return (
     <Link to={item.slug} className="card card__fade-in" onClick={handleClick}>
-      <img src={imagePath} alt={item.imageDescription} className="card__image" />
+      <img src={getImagePath(item.image)} alt={item.imageDescription} className="card__image" />
 
       {item.isNew === true && <Badges name="new" />}
 

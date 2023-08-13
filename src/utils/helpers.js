@@ -1,0 +1,1 @@
+export const getImagePath = (image) => `assets/images/restaurants/${image}`

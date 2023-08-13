@@ -1,9 +1,8 @@
 import { useStoreContext } from '../../hooks/useStoreContext'
 import { useParams } from 'react-router'
-import { Like, RestaurantMenu } from '../../components'
-
-// dev
-import dataFromJSON from '../../data/restaurants.json'
+import useGetRestaurant from '../../hooks/useGetRestaurant'
+import { Like, Loader, RestaurantMenu } from '../../components'
+import { getImagePath } from '../../utils/helpers'
 
 export default function Restaurant() {
 
@@ -11,16 +10,15 @@ export default function Restaurant() {
 
   let { slug } = useParams()
 
-  const item = dataFromJSON.filter(data => data.slug === slug)?.pop()
+  const [restaurant, loading] = useGetRestaurant({ slug })
 
-  const imagePath = `assets/images/restaurants/${item.image}`
   const menuTitle = {
     starter: 'ENTRÉES',
     meal: 'PLATS',
     sweet: 'DÉSSERTS'
   }
 
-  const menuCategories = Object.keys(item.menu)
+  const menuCategories = Object.keys(menuTitle)
 
   /**
    * Add an increment for each item
@@ -34,7 +32,7 @@ export default function Restaurant() {
     const newMenu = {}
 
     menuCategories.map(category => {
-      newMenu[category] = item.menu[category]
+      newMenu[category] = restaurant.menu[category]
       newMenu[category].map((_, index) => {
         newMenu[category][index].delay = itemCount
         itemCount++
@@ -46,21 +44,33 @@ export default function Restaurant() {
 
   return (
     <div className="restaurant">
-      <img src={imagePath} alt="" className="restaurant__image" />
+      <Loader loading={loading} />
+      {
+        loading === true ? (
+          <div className="restaurant__image"></div>
+        ) : (
+          <img src={getImagePath(restaurant.image)} alt="" className="restaurant__image" />
+        )
+      }
+
       <form className="container restaurant__menu" onSubmit={(event) => event.preventDefault()}>
-        <h2>
-          {item.name}
-          <Like isLike={isLiked(item.id) === true} handleClick={() => handleLike(item.id)} />
+        <h2 className="restaurant__menu__main__title">
+          {loading === true ? (
+            <span className="restaurant__menu__main__title__placeholder"></span>
+          ) : (
+            <>
+              {restaurant.name}
+              <Like isLike={isLiked(restaurant.id) === true} handleClick={() => handleLike(restaurant.id)} />
+            </>
+          )}
         </h2>
 
-        {
-          menuCategories.map((category, index) => {
-            return (<RestaurantMenu name={menuTitle[category]} items={menuWithItemMarked()[category]} key={index} />)
-          })
-        }
+        <RestaurantMenu name={menuTitle['starter']} items={loading === false ? menuWithItemMarked()['starter'] : []} loading={loading} />
+        <RestaurantMenu name={menuTitle['meal']} items={loading === false ? menuWithItemMarked()['meal'] : []} loading={loading} />
+        <RestaurantMenu name={menuTitle['sweet']} items={loading === false ? menuWithItemMarked()['sweet'] : []} loading={loading} />
 
         <button type="submit" className="btn btn--classic btn--p50 btn--center">Commander</button>
       </form>
-    </div>
+    </div >
   )
 }
