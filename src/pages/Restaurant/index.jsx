@@ -1,6 +1,6 @@
 import { useStoreContext } from '../../hooks/useStoreContext'
 import { useParams } from 'react-router'
-import { useGetRestaurant } from '../../hooks/'
+import { useGetRestaurant, useDocumentTitle } from '../../hooks/'
 import { Like, Loader, RestaurantMenu } from '../../components'
 import { getImagePath } from '../../utils/helpers'
 
@@ -11,6 +11,8 @@ export default function Restaurant() {
   let { slug } = useParams()
 
   const [restaurant, loading] = useGetRestaurant({ slug })
+
+  useDocumentTitle(`Restaurant ${restaurant.name}`)
 
   const menuTitle = {
     starter: 'ENTRÉES',

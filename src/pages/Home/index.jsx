@@ -1,9 +1,11 @@
 import { Loader, Localization, ExploreRestaurants, Process, Restaurants } from '../../components'
-import { useFetchRestaurants } from '../../hooks'
+import { useFetchRestaurants, useDocumentTitle } from '../../hooks'
 
 export default function Home() {
 
   const [restaurants, loading] = useFetchRestaurants()
+
+  useDocumentTitle('')
 
   return (
     <>
