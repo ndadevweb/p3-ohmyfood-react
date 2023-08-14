@@ -1,5 +1,5 @@
 import { Loader, Localization, ExploreRestaurants, Process, Restaurants } from '../../components'
-import useFetchRestaurants from '../../hooks/useFetchRestaurants'
+import { useFetchRestaurants } from '../../hooks'
 
 export default function Home() {
 

@@ -1,6 +1,6 @@
 import { useStoreContext } from '../../hooks/useStoreContext'
 import { useParams } from 'react-router'
-import useGetRestaurant from '../../hooks/useGetRestaurant'
+import { useGetRestaurant } from '../../hooks/'
 import { Like, Loader, RestaurantMenu } from '../../components'
 import { getImagePath } from '../../utils/helpers'
 
