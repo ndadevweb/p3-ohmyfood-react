@@ -1,5 +1,6 @@
 import { useStoreContext } from '../../hooks/useStoreContext'
 import { useParams } from 'react-router'
+import { useState } from 'react'
 import { useGetRestaurant, useDocumentTitle } from '../../hooks/'
 import { Like, Loader, RestaurantMenu } from '../../components'
 import { getImagePath } from '../../utils/helpers'
@@ -11,6 +12,8 @@ export default function Restaurant() {
   let { slug } = useParams()
 
   const [restaurant, loading] = useGetRestaurant({ slug })
+
+  const [dishesChoosen, setDishChoosen] = useState([])
 
   useDocumentTitle(`Restaurant ${restaurant.name}`)
 
@@ -44,6 +47,15 @@ export default function Restaurant() {
     return newMenu
   }
 
+  const toggleDish = (dishName) => {
+    console.log('page', dishName)
+    if (dishesChoosen.includes(dishName) === true) {
+      setDishChoosen((oldDishesChoosen) => oldDishesChoosen.filter(oldDish => oldDish !== dishName))
+    } else {
+      setDishChoosen((dishes) => [...dishes, dishName])
+    }
+  }
+
   return (
     <div className="restaurant">
       <Loader loading={loading} />
@@ -67,9 +79,26 @@ export default function Restaurant() {
           )}
         </h2>
 
-        <RestaurantMenu name={menuTitle['starter']} items={loading === false ? menuWithItemMarked()['starter'] : []} loading={loading} />
-        <RestaurantMenu name={menuTitle['meal']} items={loading === false ? menuWithItemMarked()['meal'] : []} loading={loading} />
-        <RestaurantMenu name={menuTitle['sweet']} items={loading === false ? menuWithItemMarked()['sweet'] : []} loading={loading} />
+        <RestaurantMenu
+          name={menuTitle['starter']} items={loading === false ? menuWithItemMarked()['starter'] : []}
+          loading={loading}
+          dishesChoosen={dishesChoosen}
+          dishAdd={(dish) => toggleDish(dish)}
+        />
+        <RestaurantMenu
+          name={menuTitle['meal']}
+          items={loading === false ? menuWithItemMarked()['meal'] : []}
+          loading={loading}
+          dishesChoosen={dishesChoosen}
+          dishAdd={(dish) => toggleDish(dish)}
+        />
+        <RestaurantMenu
+          name={menuTitle['sweet']}
+          items={loading === false ? menuWithItemMarked()['sweet'] : []}
+          loading={loading}
+          dishesChoosen={dishesChoosen}
+          dishAdd={(dish) => toggleDish(dish)}
+        />
 
         <button type="submit" className="btn btn--classic btn--p50 btn--center">Commander</button>
       </form>

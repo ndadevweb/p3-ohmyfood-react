@@ -213,6 +213,7 @@
         }
     }
 
+    &__checked--active,
     &:hover>&__checked {
         width: 57px;
 
